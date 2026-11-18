@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "MagnoStore",
+  "short_name": "MagnoStore",
+  "description": "Perfumes disponibles en MagnoStore",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#11100f",
+  "theme_color": "#17120f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
