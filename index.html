@@ -1,37 +1,778 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17120f">
-  <meta name="description" content="Bienvenido a MagnoStore.">
-  <title>MagnoStore | Inicio</title>
-  <link rel="manifest" href="./manifest.json">
-  <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Magno Store | Boutique & Fragancias</title>
+  
+  <!-- PWA & Instalación Móvil -->
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#0B0B0B" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Magno Store" />
+  <link rel="apple-touch-icon" href="./logo.png" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            cream: '#FDFBF9',
+            blush: '#FAF5F2',
+            terracotta: '#D48C70',
+            terracottaDark: '#B87156',
+            champagne: '#E6CCB2',
+            charcoal: '#2D2926',
+            taupe: '#6E655F',
+            borderSoft: '#F3E8E2',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #0B0B0B;
+      color: #2D2926;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .tab-section {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .tab-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-<body>
-  <header class="topbar">
-    <a class="brand-logo" href="./index.html" aria-label="MagnoStore, inicio"><span class="logo-mark">M</span><span>Magno<span class="gold">Store</span></span></a>
-    <nav aria-label="Navegación principal">
-      <a class="active" href="./index.html">Inicio</a>
-      <a href="./perfumes.html">Perfumes</a>
-      <a href="./zapatos.html">Zapatos</a>
-      <a href="./perfil.html">Perfil</a>
-      <a class="cart-link" href="./carrito.html">Carrito <span id="cart-count">0</span></a>
+<body class="flex justify-center min-h-screen">
+
+  <!-- Contenedor Mobile-First -->
+  <div class="w-full max-w-[480px] bg-cream min-h-screen shadow-xl relative flex flex-col pb-24 border-x border-borderSoft">
+
+    <!-- HEADER SUPERIOR FIJO CON LOGO -->
+    <header class="sticky top-0 z-30 bg-cream/95 backdrop-blur-md border-b border-borderSoft px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-[#0B0B0B] border border-[#E6CCB2]/40 overflow-hidden flex items-center justify-center shadow-sm shrink-0">
+          <img src="./logo.png" alt="Magno Store Logo" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h1 class="font-serif text-xl font-bold tracking-tight text-charcoal leading-none">Magno Store</h1>
+          <p class="text-[10px] uppercase tracking-widest text-terracotta font-semibold mt-0.5">Boutique & Fragancias</p>
+        </div>
+      </div>
+      <a href="https://wa.me/584142607437?text=Hola%20Magno%20Store,%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20sus%20perfumes." 
+         target="_blank" 
+         class="flex items-center gap-1.5 bg-[#25D366]/15 text-[#1DA851] hover:bg-[#25D366]/25 px-3 py-1.5 rounded-full text-xs font-semibold transition">
+        <i data-lucide="message-circle" class="w-4 h-4"></i>
+        <span>Soporte</span>
+      </a>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-1 px-4 pt-4">
+
+      <!-- ==================== 1. SECCIÓN INICIO ==================== -->
+      <section id="sec-inicio" class="tab-section active space-y-6">
+        
+        <!-- Banner Principal con el Logo Integrado -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1C1A19] via-[#2D2926] to-[#0B0B0B] p-6 text-white border border-[#E6CCB2]/30 shadow-md">
+          <div class="relative z-10 flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-black border border-[#E6CCB2]/50 overflow-hidden shadow-lg shrink-0 flex items-center justify-center">
+              <img src="./logo.png" alt="Logo" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <span class="inline-block bg-[#E6CCB2]/20 text-[#E6CCB2] text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-1.5">
+                Exclusividad & Estilo
+              </span>
+              <h2 class="font-serif text-xl font-bold leading-snug">
+                Magno Store
+              </h2>
+              <p class="text-xs text-[#E6CCB2]/80 mt-0.5">El aroma que define tu esencia</p>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+            <p class="text-xs text-gray-300">Descubre fragancias originales y exclusivas.</p>
+            <button onclick="switchTab('perfumes')" class="bg-[#E6CCB2] text-black text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm hover:bg-white transition shrink-0">
+              Explorar
+            </button>
+          </div>
+        </div>
+
+        <!-- Accesos Rápidos por Marca -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-serif text-lg font-bold text-charcoal">Nuestras Marcas</h3>
+            <button onclick="switchTab('perfumes')" class="text-xs font-semibold text-terracotta">Ver todo</button>
+          </div>
+          <div class="grid grid-cols-4 gap-2.5">
+            <button onclick="goToBrand('Ésika')" class="bg-white border border-borderSoft rounded-2xl p-3 flex flex-col items-center justify-center gap-1.5 shadow-sm hover:border-terracotta transition">
+              <div class="w-9 h-9 rounded-full bg-blush flex items-center justify-center text-terracotta font-serif font-bold text-sm">É</div>
+              <span class="text-[11px] font-semibold text-charcoal">Ésika</span>
+            </button>
+            <button onclick="goToBrand('Cyzone')" class="bg-white border border-borderSoft rounded-2xl p-3 flex flex-col items-center justify-center gap-1.5 shadow-sm hover:border-terracotta transition">
+              <div class="w-9 h-9 rounded-full bg-blush flex items-center justify-center text-terracotta font-serif font-bold text-sm">C</div>
+              <span class="text-[11px] font-semibold text-charcoal">Cyzone</span>
+            </button>
+            <button onclick="goToBrand('L\'Bel')" class="bg-white border border-borderSoft rounded-2xl p-3 flex flex-col items-center justify-center gap-1.5 shadow-sm hover:border-terracotta transition">
+              <div class="w-9 h-9 rounded-full bg-blush flex items-center justify-center text-terracotta font-serif font-bold text-sm">L'</div>
+              <span class="text-[11px] font-semibold text-charcoal">L'Bel</span>
+            </button>
+            <button onclick="goToBrand('Árabes')" class="bg-white border border-borderSoft rounded-2xl p-3 flex flex-col items-center justify-center gap-1.5 shadow-sm hover:border-terracotta transition">
+              <div class="w-9 h-9 rounded-full bg-blush flex items-center justify-center text-terracotta font-serif font-bold text-sm">Á</div>
+              <span class="text-[11px] font-semibold text-charcoal">Árabes</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Banner Adelanto Zapatos -->
+        <div onclick="switchTab('zapatos')" class="cursor-pointer bg-white border border-borderSoft rounded-2xl p-4 flex items-center justify-between shadow-sm hover:border-terracotta transition">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-blush flex items-center justify-center text-terracotta">
+              <i data-lucide="footprints" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h4 class="font-bold text-sm text-charcoal">Sección Zapatos</h4>
+                <span class="bg-champagne/50 text-charcoal text-[10px] font-bold px-2 py-0.5 rounded-full">Pronto disponible</span>
+              </div>
+              <p class="text-xs text-taupe mt-0.5">Nueva colección de calzado en camino</p>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-taupe"></i>
+        </div>
+
+        <!-- Perfumes Destacados -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-serif text-lg font-bold text-charcoal">Favoritos del Mes</h3>
+            <span class="text-[11px] text-taupe">Top ventas</span>
+          </div>
+          <div id="featured-grid" class="grid grid-cols-2 gap-3">
+            <!-- Renderizado dinámicamente por JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 2. SECCIÓN PERFUMES ==================== -->
+      <section id="sec-perfumes" class="tab-section space-y-4">
+        
+        <!-- Barra de búsqueda "¿Qué desea?" -->
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 text-taupe absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            id="search-input" 
+            oninput="filterPerfumes()"
+            placeholder="¿Qué desea?" 
+            class="w-full bg-white border border-borderSoft rounded-2xl pl-10 pr-9 py-3 text-sm text-charcoal placeholder:text-taupe/70 focus:outline-none focus:border-terracotta shadow-sm"
+          />
+          <button id="clear-search" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-taupe hover:text-charcoal">
+            <i data-lucide="x-circle" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Filtros por Marca -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="brand-filters">
+          <button onclick="setBrandFilter('Todas')" data-brand="Todas" class="brand-pill active bg-charcoal text-white px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition">
+            Todas
+          </button>
+          <button onclick="setBrandFilter('Ésika')" data-brand="Ésika" class="brand-pill bg-white text-taupe border border-borderSoft px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition">
+            Ésika
+          </button>
+          <button onclick="setBrandFilter('Cyzone')" data-brand="Cyzone" class="brand-pill bg-white text-taupe border border-borderSoft px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition">
+            Cyzone
+          </button>
+          <button onclick="setBrandFilter('L\'Bel')" data-brand="L'Bel" class="brand-pill bg-white text-taupe border border-borderSoft px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition">
+            L'Bel
+          </button>
+          <button onclick="setBrandFilter('Árabes')" data-brand="Árabes" class="brand-pill bg-white text-taupe border border-borderSoft px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition">
+            Árabes
+          </button>
+        </div>
+
+        <!-- Contador de resultados -->
+        <div class="flex items-center justify-between text-xs text-taupe px-1">
+          <span id="results-count">Mostrando 12 fragancias</span>
+          <span id="active-brand-label" class="font-semibold text-terracotta">Todas las marcas</span>
+        </div>
+
+        <!-- Catálogo Grid -->
+        <div id="perfumes-grid" class="grid grid-cols-2 gap-3 pb-4">
+          <!-- Renderizado dinámicamente por JS -->
+        </div>
+
+        <!-- Estado vacío búsqueda -->
+        <div id="empty-search" class="hidden text-center py-12 bg-white rounded-3xl border border-borderSoft p-6">
+          <div class="w-12 h-12 rounded-full bg-blush text-terracotta flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="search-x" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-serif font-bold text-base text-charcoal">No encontramos esa fragancia</h4>
+          <p class="text-xs text-taupe mt-1 mb-4">Intenta buscando por otra nota olfativa o marca.</p>
+          <button onclick="resetFilters()" class="bg-terracotta text-white text-xs font-semibold px-4 py-2 rounded-xl">
+            Ver todos los perfumes
+          </button>
+        </div>
+      </section>
+
+      <!-- ==================== 3. SECCIÓN ZAPATOS ==================== -->
+      <section id="sec-zapatos" class="tab-section">
+        <div class="bg-white border border-borderSoft rounded-3xl p-7 text-center shadow-sm mt-4 space-y-4">
+          <div class="w-20 h-20 rounded-full bg-blush border border-borderSoft flex items-center justify-center mx-auto text-terracotta">
+            <i data-lucide="footprints" class="w-9 h-9"></i>
+          </div>
+          
+          <span class="inline-block bg-champagne/60 text-charcoal text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">
+            Pronto disponible
+          </span>
+
+          <h2 class="font-serif text-2xl font-bold text-charcoal">
+            Nueva Colección de Calzado
+          </h2>
+
+          <p class="text-xs text-taupe leading-relaxed max-w-xs mx-auto">
+            Estamos preparando una selección exclusiva de zapatos casuales y deportivos con el sello de calidad de <strong>Magno Store</strong>. Muy pronto podrás explorar modelos y tallas aquí.
+          </p>
+
+          <div class="pt-3">
+            <a href="https://wa.me/584142607437?text=Hola%20Magno%20Store,%20quiero%20recibir%20aviso%20cuando%20est%C3%A9%20disponible%20la%20secci%C3%B3n%20de%20Zapatos." 
+               target="_blank" 
+               class="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-xs py-3.5 px-5 rounded-2xl shadow-sm transition">
+              <i data-lucide="bell-ring" class="w-4 h-4"></i>
+              <span>Recibir aviso por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 4. SECCIÓN CARRITO ==================== -->
+      <section id="sec-carrito" class="tab-section space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="font-serif text-xl font-bold text-charcoal">Tu Carrito</h2>
+          <button id="clear-cart-btn" onclick="clearCart()" class="hidden text-xs text-taupe hover:text-red-500 font-medium">
+            Vaciar carrito
+          </button>
+        </div>
+
+        <!-- Carrito Vacío -->
+        <div id="cart-empty" class="bg-white border border-borderSoft rounded-3xl p-8 text-center shadow-sm">
+          <div class="w-14 h-14 rounded-full bg-blush text-terracotta flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-serif font-bold text-lg text-charcoal">Tu carrito está vacío</h3>
+          <p class="text-xs text-taupe mt-1 mb-5">Explora nuestro catálogo y elige tu fragancia ideal.</p>
+          <button onclick="switchTab('perfumes')" class="bg-charcoal text-white text-xs font-semibold px-5 py-3 rounded-xl">
+            Ir a Perfumes
+          </button>
+        </div>
+
+        <!-- Lista de Productos en Carrito -->
+        <div id="cart-items-container" class="space-y-2.5">
+          <!-- Renderizado dinámicamente -->
+        </div>
+
+        <!-- Resumen y Checkout -->
+        <div id="cart-summary" class="hidden bg-white border border-borderSoft rounded-3xl p-5 space-y-4 shadow-sm">
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between text-taupe">
+              <span>Subtotal</span>
+              <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="flex justify-between text-taupe">
+              <span>Envío / Entrega</span>
+              <span class="text-terracotta font-medium">A coordinar</span>
+            </div>
+            <div class="border-t border-borderSoft pt-2.5 flex justify-between text-base font-bold text-charcoal">
+              <span>Total estimado</span>
+              <span id="cart-total">$0.00</span>
+            </div>
+          </div>
+
+          <div class="space-y-2.5 pt-1">
+            <button onclick="checkoutWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-xs py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-sm transition">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Enviar pedido por WhatsApp</span>
+            </button>
+            <button onclick="registerOrder()" class="w-full bg-charcoal hover:bg-terracottaDark text-white font-semibold text-xs py-3 px-4 rounded-2xl flex items-center justify-center gap-2 transition">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Registrar pedido en mi historial</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 5. SECCIÓN PERFIL ==================== -->
+      <section id="sec-perfil" class="tab-section space-y-5 pb-6">
+        
+        <!-- Tarjeta de Cliente con Logo -->
+        <div class="bg-white border border-borderSoft rounded-3xl p-5 flex items-center gap-4 shadow-sm">
+          <div class="w-14 h-14 rounded-2xl bg-black border border-[#E6CCB2]/40 overflow-hidden shrink-0 flex items-center justify-center shadow-md">
+            <img src="./logo.png" alt="Logo" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta bg-blush px-2 py-0.5 rounded-full">Cliente VIP</span>
+            <h2 class="font-serif text-lg font-bold text-charcoal mt-1">Magno Store Club</h2>
+            <p class="text-xs text-taupe">Gestiona tus pedidos y contáctanos directo</p>
+          </div>
+        </div>
+
+        <!-- Soporte Oficial WhatsApp -->
+        <div class="bg-gradient-to-r from-[#EBF9F0] to-[#F4FBF7] border border-[#CBEAD6] rounded-3xl p-5 space-y-3">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#1DA851]">Atención Personalizada</span>
+              <h3 class="font-serif text-base font-bold text-charcoal mt-0.5">Soporte Oficial WhatsApp</h3>
+              <p class="text-sm font-bold text-charcoal mt-1 tracking-wide">0414-2607437</p>
+            </div>
+            <div class="w-10 h-10 rounded-2xl bg-[#25D366] text-white flex items-center justify-center shrink-0">
+              <i data-lucide="headphones" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 pt-1">
+            <a href="https://wa.me/584142607437?text=Hola%20Magno%20Store,%20necesito%20ayuda%20con%20un%20pedido." 
+               target="_blank" 
+               class="bg-[#25D366] hover:bg-[#1ebe5d] text-white text-xs font-semibold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+              <span>Chatear ahora</span>
+            </a>
+            <button onclick="copySupportPhone()" class="bg-white border border-[#CBEAD6] text-charcoal hover:bg-white/80 text-xs font-semibold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="copy" class="w-3.5 h-3.5 text-[#1DA851]"></i>
+              <span id="copy-btn-text">Copiar número</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Preguntas Frecuentes (FAQ) -->
+        <div class="space-y-2.5">
+          <h3 class="font-serif text-lg font-bold text-charcoal px-1">Preguntas Frecuentes</h3>
+          
+          <div class="space-y-2" id="faq-container">
+            <!-- FAQ 1 -->
+            <div class="bg-white border border-borderSoft rounded-2xl overflow-hidden">
+              <button onclick="toggleFaq(this)" class="w-full px-4 py-3.5 text-left flex items-center justify-between gap-2 text-xs font-bold text-charcoal">
+                <span>¿Realizan envíos nacionales y entregas personales?</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-terracotta transition-transform duration-200 shrink-0"></i>
+              </button>
+              <div class="faq-answer hidden px-4 pb-3.5 text-xs text-taupe leading-relaxed border-t border-borderSoft/60 pt-2.5">
+                Sí, realizamos entregas personales acordadas en puntos céntricos y envíos seguros a todo el país a través de Zoom, MRW y Tealca.
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="bg-white border border-borderSoft rounded-2xl overflow-hidden">
+              <button onclick="toggleFaq(this)" class="w-full px-4 py-3.5 text-left flex items-center justify-between gap-2 text-xs font-bold text-charcoal">
+                <span>¿Cuáles son los métodos de pago disponibles?</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-terracotta transition-transform duration-200 shrink-0"></i>
+              </button>
+              <div class="faq-answer hidden px-4 pb-3.5 text-xs text-taupe leading-relaxed border-t border-borderSoft/60 pt-2.5">
+                Aceptamos Pago Móvil, transferencias bancarias nacionales, divisas en efectivo y pagos digitales (Zinli / Binance).
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="bg-white border border-borderSoft rounded-2xl overflow-hidden">
+              <button onclick="toggleFaq(this)" class="w-full px-4 py-3.5 text-left flex items-center justify-between gap-2 text-xs font-bold text-charcoal">
+                <span>¿Cuánto tiempo tarda en llegar mi pedido?</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-terracotta transition-transform duration-200 shrink-0"></i>
+              </button>
+              <div class="faq-answer hidden px-4 pb-3.5 text-xs text-taupe leading-relaxed border-t border-borderSoft/60 pt-2.5">
+                Las entregas personales se coordinan para el mismo día o al día siguiente. Los envíos nacionales demoran entre 24 y 48 horas hábiles según la agencia.
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="bg-white border border-borderSoft rounded-2xl overflow-hidden">
+              <button onclick="toggleFaq(this)" class="w-full px-4 py-3.5 text-left flex items-center justify-between gap-2 text-xs font-bold text-charcoal">
+                <span>¿Me pueden asesorar para elegir un perfume?</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-terracotta transition-transform duration-200 shrink-0"></i>
+              </button>
+              <div class="faq-answer hidden px-4 pb-3.5 text-xs text-taupe leading-relaxed border-t border-borderSoft/60 pt-2.5">
+                ¡Por supuesto! Escríbenos directamente a nuestro WhatsApp oficial <strong>0414-2607437</strong> cuéntanos qué aromas te gustan (dulces, frescos, amaderados o cítricos) y te recomendaremos las mejores opciones.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Historial de Pedidos -->
+        <div class="space-y-2.5">
+          <h3 class="font-serif text-lg font-bold text-charcoal px-1">Historial de Pedidos</h3>
+          <div id="order-history-list" class="space-y-2.5">
+            <div class="bg-white border border-borderSoft rounded-2xl p-5 text-center text-xs text-taupe">
+              Aún no has registrado pedidos en esta sesión.
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- NOTIFICACIÓN TOAST -->
+    <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-charcoal text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center gap-2 whitespace-nowrap">
+      <i data-lucide="check-circle-2" class="w-4 h-4 text-[#25D366]"></i>
+      <span id="toast-msg">Agregado al carrito</span>
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR FIJA -->
+    <nav class="fixed bottom-0 w-full max-w-[480px] bg-white/95 backdrop-blur-md border-t border-borderSoft px-2 py-2 flex justify-around items-center z-40">
+      <button onclick="switchTab('inicio')" data-tab="inicio" class="nav-btn active flex flex-col items-center gap-1 py-1 px-2 text-terracotta transition">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold">Inicio</span>
+      </button>
+
+      <button onclick="switchTab('perfumes')" data-tab="perfumes" class="nav-btn flex flex-col items-center gap-1 py-1 px-2 text-taupe hover:text-charcoal transition">
+        <i data-lucide="sparkles" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Perfumes</span>
+      </button>
+
+      <button onclick="switchTab('zapatos')" data-tab="zapatos" class="nav-btn flex flex-col items-center gap-1 py-1 px-2 text-taupe hover:text-charcoal transition">
+        <i data-lucide="footprints" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Zapatos</span>
+      </button>
+
+      <button onclick="switchTab('carrito')" data-tab="carrito" class="nav-btn relative flex flex-col items-center gap-1 py-1 px-2 text-taupe hover:text-charcoal transition">
+        <div class="relative">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="cart-badge" class="hidden absolute -top-1.5 -right-2 bg-terracotta text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </div>
+        <span class="text-[10px] font-semibold">Carrito</span>
+      </button>
+
+      <button onclick="switchTab('perfil')" data-tab="perfil" class="nav-btn flex flex-col items-center gap-1 py-1 px-2 text-taupe hover:text-charcoal transition">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Perfil</span>
+      </button>
     </nav>
-    <button id="install-button" class="install-button" hidden>Instalar app</button>
-  </header>
-  <main>
-    <section class="hero">
-      <p class="eyebrow">BIENVENIDO A</p>
-      <h1>Magno<span class="gold">Store</span></h1>
-      <p>Encuentra tu próxima fragancia favorita.</p>
-      <a class="button" href="./perfumes.html">Ver perfumes</a>
-    </section>
-  </main>
-  <footer><span>© <span id="year"></span> MagnoStore</span></footer>
-  <div id="notice" class="notice" role="status" aria-live="polite"></div>
+
+  </div>
+
+  <!-- LÓGICA DE LA APLICACIÓN -->
+  <script>
+    const perfumesData = [
+      { id: 1, name: "Vibranza", brand: "Ésika", notes: "Oriental Dulce • Orquídea y Vainilla", price: 28, featured: true, img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&q=80" },
+      { id: 2, name: "Magnat", brand: "Ésika", notes: "Amaderado • Cuero y Sándalo", price: 32, featured: false, img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&q=80" },
+      { id: 3, name: "Expression", brand: "Ésika", notes: "Floral • Jazmín y Flor de Naranjo", price: 22, featured: false, img: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=80" },
+      { id: 4, name: "Sweet Black", brand: "Cyzone", notes: "Dulce • Pink Pomelo y Sándalo", price: 18, featured: true, img: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&q=80" },
+      { id: 5, name: "Nitro", brand: "Cyzone", notes: "Herbal • Cítricos y Madera", price: 19, featured: false, img: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&q=80" },
+      { id: 6, name: "Dancing", brand: "Cyzone", notes: "Cítrico Floral • Mandarina y Rosa", price: 16, featured: false, img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" },
+      { id: 7, name: "Mon L'Bel", brand: "L'Bel", notes: "Oriental Floral • Magnolia y Base Dulce", price: 35, featured: true, img: "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&q=80" },
+      { id: 8, name: "Bleu Intense", brand: "L'Bel", notes: "Herbal Aromático • Notas Marinas", price: 30, featured: false, img: "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=400&q=80" },
+      { id: 9, name: "Liasson", brand: "L'Bel", notes: "Floral • Lirio del Valle y Vainilla", price: 34, featured: false, img: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&q=80" },
+      { id: 10, name: "Yara Lattafa", brand: "Árabes", notes: "Gourmand • Orquídea, Vainilla y Frutas", price: 38, featured: true, img: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400&q=80" },
+      { id: 11, name: "Asad Lattafa", brand: "Árabes", notes: "Especiado • Pimienta Negra, Tabaco y Vainilla", price: 40, featured: false, img: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&q=80" },
+      { id: 12, name: "Club de Nuit Intense", brand: "Árabes", notes: "Amaderado Especiado • Limón, Abedul y Almizcle", price: 45, featured: false, img: "https://images.unsplash.com/photo-1590736969955-71cc94801759?w=400&q=80" }
+    ];
+
+    let currentBrand = 'Todas';
+    let cart = [];
+    let orders = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFeatured();
+      renderPerfumes();
+      lucide.createIcons();
+    });
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(`sec-${tabName}`).classList.add('active');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active', 'text-terracotta');
+        btn.classList.add('text-taupe');
+      });
+      const activeBtn = document.querySelector(`.nav-btn[data-tab="${tabName}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'text-terracotta');
+        activeBtn.classList.remove('text-taupe');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToBrand(brand) {
+      switchTab('perfumes');
+      setBrandFilter(brand);
+    }
+
+    function createProductCard(item) {
+      return `
+        <div class="bg-white border border-borderSoft rounded-2xl overflow-hidden flex flex-col justify-between shadow-sm hover:border-terracotta/60 transition">
+          <div>
+            <div class="relative h-36 bg-blush overflow-hidden">
+              <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover" loading="lazy" />
+              <span class="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-charcoal text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-xs">
+                ${item.brand}
+              </span>
+            </div>
+            <div class="p-3">
+              <h4 class="font-serif font-bold text-sm text-charcoal leading-tight">${item.name}</h4>
+              <p class="text-[11px] text-taupe mt-1 line-clamp-2 leading-snug">${item.notes}</p>
+            </div>
+          </div>
+          <div class="px-3 pb-3 pt-1 flex items-center justify-between">
+            <span class="font-bold text-sm text-charcoal">$${item.price.toFixed(2)}</span>
+            <button onclick="addToCart(${item.id})" class="bg-blush hover:bg-terracotta text-terracotta hover:text-white text-xs font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>Agregar</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFeatured() {
+      const container = document.getElementById('featured-grid');
+      const featured = perfumesData.filter(p => p.featured);
+      container.innerHTML = featured.map(createProductCard).join('');
+    }
+
+    function setBrandFilter(brand) {
+      currentBrand = brand;
+      document.querySelectorAll('.brand-pill').forEach(pill => {
+        if (pill.dataset.brand === brand) {
+          pill.classList.add('bg-charcoal', 'text-white');
+          pill.classList.remove('bg-white', 'text-taupe', 'border', 'border-borderSoft');
+        } else {
+          pill.classList.remove('bg-charcoal', 'text-white');
+          pill.classList.add('bg-white', 'text-taupe', 'border', 'border-borderSoft');
+        }
+      });
+      document.getElementById('active-brand-label').textContent = brand === 'Todas' ? 'Todas las marcas' : brand;
+      filterPerfumes();
+    }
+
+    function filterPerfumes() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const clearBtn = document.getElementById('clear-search');
+      clearBtn.classList.toggle('hidden', query.length === 0);
+
+      const filtered = perfumesData.filter(p => {
+        const matchBrand = currentBrand === 'Todas' || p.brand === currentBrand;
+        const matchQuery = p.name.toLowerCase().includes(query) || 
+                           p.brand.toLowerCase().includes(query) || 
+                           p.notes.toLowerCase().includes(query);
+        return matchBrand && matchQuery;
+      });
+
+      const grid = document.getElementById('perfumes-grid');
+      const emptyState = document.getElementById('empty-search');
+      const countLabel = document.getElementById('results-count');
+
+      countLabel.textContent = `Mostrando ${filtered.length} fragancia${filtered.length === 1 ? '' : 's'}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+        grid.innerHTML = filtered.map(createProductCard).join('');
+      }
+      lucide.createIcons();
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      filterPerfumes();
+    }
+
+    function resetFilters() {
+      document.getElementById('search-input').value = '';
+      setBrandFilter('Todas');
+    }
+
+    function addToCart(id) {
+      const product = perfumesData.find(p => p.id === id);
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      updateCartUI();
+      showToast(`"${product.name}" agregado al carrito`);
+    }
+
+    function updateQty(id, delta) {
+      const index = cart.findIndex(item => item.id === id);
+      if (index !== -1) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        updateCartUI();
+      }
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const badge = document.getElementById('cart-badge');
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      
+      if (totalItems > 0) {
+        badge.textContent = totalItems;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      const emptyDiv = document.getElementById('cart-empty');
+      const itemsContainer = document.getElementById('cart-items-container');
+      const summaryDiv = document.getElementById('cart-summary');
+      const clearBtn = document.getElementById('clear-cart-btn');
+
+      if (cart.length === 0) {
+        emptyDiv.classList.remove('hidden');
+        itemsContainer.innerHTML = '';
+        summaryDiv.classList.add('hidden');
+        clearBtn.classList.add('hidden');
+        return;
+      }
+
+      emptyDiv.classList.add('hidden');
+      summaryDiv.classList.remove('hidden');
+      clearBtn.classList.remove('hidden');
+
+      let subtotal = 0;
+      itemsContainer.innerHTML = cart.map(item => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+        return `
+          <div class="bg-white border border-borderSoft rounded-2xl p-3 flex items-center justify-between gap-3 shadow-xs">
+            <img src="${item.img}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover bg-blush shrink-0" />
+            <div class="flex-1 min-w-0">
+              <span class="text-[10px] font-bold text-terracotta uppercase">${item.brand}</span>
+              <h4 class="font-serif font-bold text-sm text-charcoal truncate">${item.name}</h4>
+              <p class="text-xs font-bold text-taupe mt-0.5">$${itemTotal.toFixed(2)}</p>
+            </div>
+            <div class="flex items-center gap-2 bg-blush rounded-xl p-1">
+              <button onclick="updateQty(${item.id}, -1)" class="w-6 h-6 rounded-lg bg-white text-charcoal flex items-center justify-center font-bold text-xs shadow-2xs">-</button>
+              <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+              <button onclick="updateQty(${item.id}, 1)" class="w-6 h-6 rounded-lg bg-white text-charcoal flex items-center justify-center font-bold text-xs shadow-2xs">+</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('cart-total').textContent = `$${subtotal.toFixed(2)}`;
+      lucide.createIcons();
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) return;
+      let total = 0;
+      let msg = "Hola *Magno Store*, me gustaría realizar el siguiente pedido:\n\n";
+      cart.forEach(item => {
+        const sub = item.price * item.qty;
+        total += sub;
+        msg += `• ${item.qty}x *${item.name}* (${item.brand}) - $${sub.toFixed(2)}\n`;
+      });
+      msg += `\n*Total estimado:* $${total.toFixed(2)}\n\nQuedo atento para coordinar el pago y la entrega.`;
+
+      const url = `https://wa.me/584142607437?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    function registerOrder() {
+      if (cart.length === 0) return;
+      const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('es-VE', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+
+      orders.unshift({
+        id: Math.floor(1000 + Math.random() * 9000),
+        date: dateStr,
+        itemsCount: count,
+        total: total,
+        summary: cart.map(i => `${i.qty}x ${i.name}`).join(', ')
+      });
+
+      cart = [];
+      updateCartUI();
+      renderOrders();
+      showToast("¡Pedido guardado en tu Perfil!");
+      switchTab('perfil');
+    }
+
+    function renderOrders() {
+      const container = document.getElementById('order-history-list');
+      if (orders.length === 0) return;
+      container.innerHTML = orders.map(o => `
+        <div class="bg-white border border-borderSoft rounded-2xl p-4 space-y-1.5 shadow-2xs">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-bold text-charcoal">Pedido #${o.id}</span>
+            <span class="text-[10px] bg-blush text-terracotta font-bold px-2 py-0.5 rounded-full">${o.date}</span>
+          </div>
+          <p class="text-xs text-taupe">${o.summary}</p>
+          <div class="pt-1 flex justify-between items-center text-xs font-bold text-charcoal border-t border-borderSoft/60">
+            <span>${o.itemsCount} artículo(s)</span>
+            <span>Total: $${o.total.toFixed(2)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('i');
+      answer.classList.toggle('hidden');
+      icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    function copySupportPhone() {
+      navigator.clipboard.writeText('04142607437').then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        btnText.textContent = '¡Copiado!';
+        showToast('Número 0414-2607437 copiado');
+        setTimeout(() => { btnText.textContent = 'Copiar número'; }, 2000);
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = message;
+      toast.classList.remove('opacity-0');
+      setTimeout => {
+        toast.classList.add('opacity-0');
+      }, 2400);
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Magno Store PWA activa:', reg.scope))
+          .catch(err => console.log('Error al registrar SW:', err));
+      });
+    }
+  </script>
 </body>
 </html>
