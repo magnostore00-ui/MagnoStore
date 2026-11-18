@@ -1,7 +1,11 @@
-const CACHE_NAME = "magnostore-v1";
+const CACHE_NAME = "magnostore-v2";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
+  "./perfumes.html",
+  "./zapatos.html",
+  "./perfil.html",
+  "./carrito.html",
   "./styles.css",
   "./app.js",
   "./manifest.json",

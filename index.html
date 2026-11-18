@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#17120f">
-  <meta name="description" content="Perfumes disponibles en MagnoStore.">
-  <title>MagnoStore | Perfumes</title>
+  <meta name="description" content="Bienvenido a MagnoStore.">
+  <title>MagnoStore | Inicio</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
@@ -13,95 +13,25 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand-logo" href="#inicio" aria-label="MagnoStore, inicio">
-      <span class="logo-mark">M</span>
-      <span>Magno<span class="gold">Store</span></span>
-    </a>
+    <a class="brand-logo" href="./index.html" aria-label="MagnoStore, inicio"><span class="logo-mark">M</span><span>Magno<span class="gold">Store</span></span></a>
     <nav aria-label="Navegación principal">
-      <a href="#perfumes">Perfumes</a>
-      <a href="#zapatos">Zapatos</a>
-      <a href="#perfil">Perfil</a>
-      <a class="cart-link" href="#carrito">Carrito <span id="cart-count">0</span></a>
+      <a class="active" href="./index.html">Inicio</a>
+      <a href="./perfumes.html">Perfumes</a>
+      <a href="./zapatos.html">Zapatos</a>
+      <a href="./perfil.html">Perfil</a>
+      <a class="cart-link" href="./carrito.html">Carrito <span id="cart-count">0</span></a>
     </nav>
     <button id="install-button" class="install-button" hidden>Instalar app</button>
   </header>
-
   <main>
-    <section id="inicio" class="hero">
+    <section class="hero">
       <p class="eyebrow">BIENVENIDO A</p>
       <h1>Magno<span class="gold">Store</span></h1>
       <p>Encuentra tu próxima fragancia favorita.</p>
-      <a class="button" href="#perfumes">Ver perfumes</a>
-    </section>
-
-    <section id="perfumes" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">NUESTRA COLECCIÓN</p>
-          <h2>Perfumes</h2>
-        </div>
-        <input id="search" class="search" type="search" placeholder="Buscar perfume o marca…" aria-label="Buscar perfume o marca">
-      </div>
-      <div id="brand-filters" class="filters"></div>
-      <div id="catalog" class="product-grid"></div>
-    </section>
-
-    <section id="zapatos" class="section shoes">
-      <p class="eyebrow">PRÓXIMAMENTE</p>
-      <h2>Zapatos</h2>
-      <p>Estamos preparando esta sección para ti.</p>
-      <span class="coming-soon">Pronto disponible</span>
-    </section>
-
-    <section id="agregar" class="section add-section">
-      <p class="eyebrow">ADMINISTRACIÓN LOCAL</p>
-      <h2>Agregar perfume</h2>
-      <p class="muted">Los productos se guardan en este navegador. No compartas acceso a esta sección si no quieres que otras personas editen el catálogo.</p>
-      <form id="product-form" class="product-form">
-        <label>Nombre del perfume
-          <input name="name" required maxlength="70" placeholder="Ej.: Perfume clásico">
-        </label>
-        <label>Marca
-          <input name="brand" required maxlength="50" placeholder="Ej.: Marca">
-        </label>
-        <label>Precio
-          <input name="price" type="number" required min="0.01" step="0.01" placeholder="0.00">
-        </label>
-        <label>Unidades disponibles
-          <input name="stock" type="number" required min="1" step="1" placeholder="1">
-        </label>
-        <label class="wide">Enlace de imagen (opcional)
-          <input name="image" type="url" placeholder="https://…">
-        </label>
-        <button class="button wide" type="submit">Guardar perfume</button>
-      </form>
-    </section>
-
-    <section id="carrito" class="section">
-      <p class="eyebrow">TU SELECCIÓN</p>
-      <h2>Carrito</h2>
-      <div id="cart-items"></div>
-      <div class="cart-footer">
-        <strong>Total: <span id="cart-total">$0.00</span></strong>
-        <button id="checkout-button" class="button">Pedir por WhatsApp</button>
-      </div>
-      <p class="muted">El precio final y la disponibilidad se confirman al realizar el pedido.</p>
-    </section>
-
-    <section id="perfil" class="section profile">
-      <p class="eyebrow">¿NECESITAS AYUDA?</p>
-      <h2>Perfil y soporte</h2>
-      <p>MagnoStore — atención al cliente</p>
-      <a class="button" href="https://wa.me/584142607437" target="_blank" rel="noopener">
-        WhatsApp: 0414-2607437
-      </a>
+      <a class="button" href="./perfumes.html">Ver perfumes</a>
     </section>
   </main>
-
-  <footer>
-    <span>© <span id="year"></span> MagnoStore</span>
-    <a href="#agregar">Administrar perfumes</a>
-  </footer>
+  <footer><span>© <span id="year"></span> MagnoStore</span></footer>
   <div id="notice" class="notice" role="status" aria-live="polite"></div>
 </body>
 </html>

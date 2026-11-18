@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17120f">
+  <meta name="description" content="Tu carrito de compras en MagnoStore.">
+  <title>MagnoStore | Carrito</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand-logo" href="./index.html" aria-label="MagnoStore, inicio"><span class="logo-mark">M</span><span>Magno<span class="gold">Store</span></span></a>
+    <nav aria-label="Navegación principal">
+      <a href="./index.html">Inicio</a>
+      <a href="./perfumes.html">Perfumes</a>
+      <a href="./zapatos.html">Zapatos</a>
+      <a href="./perfil.html">Perfil</a>
+      <a class="cart-link active" href="./carrito.html">Carrito <span id="cart-count">0</span></a>
+    </nav>
+    <button id="install-button" class="install-button" hidden>Instalar app</button>
+  </header>
+  <main>
+    <section class="section">
+      <p class="eyebrow">TU SELECCIÓN</p>
+      <h1>Carrito</h1>
+      <div id="cart-items"></div>
+      <div class="cart-footer">
+        <strong>Total: <span id="cart-total">$0.00</span></strong>
+        <button id="checkout-button" class="button" type="button">Pedir por WhatsApp</button>
+      </div>
+      <p class="muted">El precio final y la disponibilidad se confirman al realizar el pedido.</p>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> MagnoStore</span></footer>
+  <div id="notice" class="notice" role="status" aria-live="polite"></div>
+</body>
+</html>
