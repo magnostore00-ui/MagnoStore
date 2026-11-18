@@ -1,10 +1,21 @@
-const CACHE_NAME = 'magno-store-v4';
+const CACHE_NAME = 'magno-store-v5';
 const APP_SHELL = ['./', './index.html', './manifest.json', './icons/icon.svg', './icons/icon-192.svg', './icons/icon-512.svg'];
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    await Promise.all(APP_SHELL.map(async path => {
+      try { const response = await fetch(path, { cache: 'reload' }); if (response.ok) await cache.put(path, response); }
+      catch (error) { console.warn('PWA asset unavailable:', path, error); }
+    }));
+    await self.skipWaiting();
+  })());
 });
 self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('magno-store-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key.startsWith('magno-store-') && key !== CACHE_NAME).map(key => caches.delete(key)));
+    await self.clients.claim();
+  })());
 });
 self.addEventListener('fetch', event => {
   const request = event.request, url = new URL(request.url);
