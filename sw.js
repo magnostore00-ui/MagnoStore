@@ -1,5 +1,5 @@
-const CACHE_NAME = 'magno-store-v5';
-const APP_SHELL = ['./', './index.html', './manifest.json', './icons/icon.svg', './icons/icon-192.svg', './icons/icon-512.svg'];
+const CACHE_NAME = 'magno-store-v6';
+const APP_SHELL = ['./', './index.html', './manifest.json', './logo.png'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
