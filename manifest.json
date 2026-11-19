@@ -1,11 +1,11 @@
 {
-  "id": "/",
+  "id": "magno-store",
   "name": "Magno Store | Boutique & Fragancias",
   "short_name": "Magno Store",
   "description": "Fragancias exclusivas de Ésika, Cyzone, L'Bel y marcas árabes.",
   "lang": "es",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
@@ -14,8 +14,7 @@
   "categories": ["shopping", "lifestyle"],
   "prefer_related_applications": false,
   "icons": [
-    {"src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
-    {"src": "/logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+    {"src": "./logo.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "./logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
   ]
 }
